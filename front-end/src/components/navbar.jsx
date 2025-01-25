@@ -17,7 +17,7 @@ const navigation = [
   { name: "Check Out", href: "/checkout" },
 ];
 
-const currentUser = true;
+const currentUser = false;
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -83,10 +83,6 @@ const Navbar = () => {
                   </div>
                 )}
               </>
-            ) : token ? (
-              <Link to="/dashboard" className="border-b-2 border-amber-400">
-                Dashboard
-              </Link>
             ) : (
               <Link to="/login">
                 {" "}
