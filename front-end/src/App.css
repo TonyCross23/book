@@ -1,0 +1,14 @@
+/* Custom styles for SweetAlert2 */
+.small-swal {
+  width: 250px !important; 
+  padding: 4px !important;
+}
+
+.small-icon {
+  font-size: .3rem !important; 
+}
+
+.small-title {
+  color: #555 !important; 
+  font-size: 14px !important;
+}

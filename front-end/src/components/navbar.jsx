@@ -9,6 +9,7 @@ import {
 import { IoSearchOutline } from "react-icons/io5";
 import { HiOutlineUser } from "react-icons/hi";
 import avatarImg from "../assets/avatar.png";
+import { useSelector } from "react-redux";
 
 const navigation = [
   { name: "Dashboard", href: "/user-dashboard" },
@@ -21,24 +22,25 @@ const currentUser = false;
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const cartItems = useSelector((state) => state.cart.cartItems);
 
   return (
     <header className="max-w-screen-2xl mx-auto px-4 py-6">
       <nav className="flex justify-between items-center">
         {/* left side */}
-        <div className="flex items-center md:gap-16 gap-4">
+        <div className="flex items-center md:gap-12 gap-9">
           <Link to="/">
             <HiMiniBars3CenterLeft className="size-6" />
           </Link>
 
           {/* search input */}
           <div className="relative sm:w-72 w-40 space-x-2">
-            <IoSearchOutline className="absolute inline-block left-2 inset-y-2" />
+            <IoSearchOutline className="absolute inline-block left-2 inset-y-3" />
 
             <input
               type="text"
               placeholder="Search here"
-              className="bg-[#EAEAEA] w-full py-1 md:px-8 px-6 rounded-md focus:outline-none"
+              className="bg-[#EAEAEA] w-full py-2 md:px-8 px-6 rounded-md focus:outline-none"
             />
           </div>
         </div>
@@ -100,6 +102,13 @@ const Navbar = () => {
             className="bg-amber-400 p-1 sm:px-6 px-2 flex items-center rounded-sm"
           >
             <HiOutlineShoppingCart className="" />
+            {cartItems.length > 0 ? (
+              <span className="text-sm font-semibold sm:ml-1">
+                {cartItems.length}
+              </span>
+            ) : (
+              <span className="text-sm font-semibold sm:ml-1">0</span>
+            )}
           </Link>
         </div>
       </nav>
