@@ -13,45 +13,44 @@ const cartSlice = createSlice({
       const existingItem = state.cartItems.find(
         (item) => item._id === action.payload._id
       );
-
       if (!existingItem) {
         state.cartItems.push(action.payload);
         Swal.fire({
           position: "top",
           icon: "success",
-          title: "Item added successfully",
           showConfirmButton: false,
           timer: 1500,
           customClass: {
             popup: "small-swal",
             icon: "small-icon",
-            title: "small-title",
           },
         });
-      } else {
+      } else
         Swal.fire({
-          title: "Item already exist",
+          title: "Already Added to the Cart",
           text: "You won't be able to revert this!",
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "Ok!",
+          confirmButtonText: "OK!",
           customClass: {
             popup: "small-swal",
-            title: "small-title",
+            icon: "small-icon",
           },
         });
-      }
     },
-  },
-  removeFromCart: (state, action) => {
-    state.cartItems.filter((item) => item._id !== action.payload._id);
-  },
-  clearCart: (state) => {
-    state.cartItems = [];
+    removeFromCart: (state, action) => {
+      state.cartItems = state.cartItems.filter(
+        (item) => item._id !== action.payload._id
+      );
+    },
+    clearCart: (state) => {
+      state.cartItems = [];
+    },
   },
 });
 
+// export the actions
 export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -1,10 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getImageUrl } from "../../utils/getImageUrl";
+import { removeFromCart } from "../../redux/features/cart/cartSlice";
 
 const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const dispatch = useDispatch();
+  const handleRemoveFromCart = (product) => {
+    dispatch(removeFromCart(product));
+  };
+  const totalPrice = cartItems
+    .reduce((acc, item) => acc + item.newPrice, 0)
+    .toFixed(2);
   return (
     <>
       <div className="flex mt-12 h-full flex-col overflow-hidden bg-white shadow-xl">
@@ -29,7 +37,7 @@ const CartPage = () => {
               {cartItems.length > 0 ? (
                 <ul role="list" className="-my-6 divide-y divide-gray-200">
                   {cartItems.map((product) => (
-                    <li className="flex py-6">
+                    <li key={product?._id} className="flex py-6">
                       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                         <img
                           alt=""
@@ -57,6 +65,7 @@ const CartPage = () => {
 
                           <div className="flex">
                             <button
+                              onClick={() => handleRemoveFromCart(product)}
                               type="button"
                               className="font-medium text-indigo-600 hover:text-indigo-500"
                             >
@@ -78,7 +87,7 @@ const CartPage = () => {
         <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
           <div className="flex justify-between text-base font-medium text-gray-900">
             <p>Subtotal</p>
-            <p>$0</p>
+            <p>${totalPrice ? totalPrice : 0}</p>
           </div>
           <p className="mt-0.5 text-sm text-gray-500">
             Shipping and taxes calculated at checkout.
