@@ -1,6 +1,6 @@
-import mongooes from "mongoose";
+import mongoose from "mongoose";
 
-const bookSchema = new mongooes.Schema(
+const bookSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -30,15 +30,11 @@ const bookSchema = new mongooes.Schema(
       type: Number,
       required: true,
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
   },
   {
     timestamps: true,
   }
 );
 
-const Book = mongooes.model("Book", bookSchema);
-module.exports = Book;
+const Book = mongoose.model("Book", bookSchema);
+export default Book;

@@ -2,6 +2,7 @@ import express from "express";
 import { connectDB } from "./config/db.config.js";
 import cors from "cors";
 import dotenv from "dotenv";
+import bookRouter from "./routers/book.router.js";
 
 dotenv.config();
 
@@ -16,6 +17,9 @@ app.use(
     Credential: true,
   })
 );
+
+//routers
+app.use("/api/book", bookRouter);
 
 app.listen(PORT, async () => {
   console.log(`Server is running on port : ${PORT}`);
