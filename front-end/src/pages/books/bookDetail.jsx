@@ -10,7 +10,6 @@ const BookDetail = () => {
   const { id } = useParams();
   const { data, isLoading, isError } = useFetchBookByIdQuery(id);
   const book = data?.book;
-  console.log(book);
 
   const dispatch = useDispatch();
 
