@@ -8,7 +8,9 @@ import { getImageUrl } from "../../utils/getImageUrl";
 
 const BookDetail = () => {
   const { id } = useParams();
-  const { data: book, isLoading, isError } = useFetchBookByIdQuery(id);
+  const { data, isLoading, isError } = useFetchBookByIdQuery(id);
+  const book = data?.book;
+  console.log(book);
 
   const dispatch = useDispatch();
 
@@ -25,9 +27,8 @@ const BookDetail = () => {
       <div className="">
         <div>
           <img
-            src={`${getImageUrl(book.coverImage)}`}
+            src={getImageUrl(book?.coverImage || book?.cover_image)}
             alt={book.title}
-            className="mb-8"
           />
         </div>
 
@@ -49,7 +50,7 @@ const BookDetail = () => {
 
         <button
           onClick={() => handleAddToCart(book)}
-          className="btn-primary px-6 space-x-1 flex items-center gap-1 "
+          className="bg-amber-300 py-2 px-6 space-x-1 flex items-center gap-1 rounded-md"
         >
           <FiShoppingCart className="" />
           <span>Add to Cart</span>

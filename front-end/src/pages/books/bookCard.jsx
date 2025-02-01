@@ -17,7 +17,7 @@ const BookCard = ({ book }) => {
         <div className="sm:h-72 sm:flex-shrink-0 border rounded-md">
           <Link to={`/book/${book._id}`}>
             <img
-              src={`${getImageUrl(book?.coverImage)}`}
+              src={`${getImageUrl(book.coverImage)}`}
               alt=""
               className="w-full bg-cover p-2 rounded-md cursor-pointer hover:scale-105 transition-all duration-200"
             />
