@@ -42,9 +42,9 @@ export const AuthProvider = ({ children }) => {
     return await signOut(auth);
   };
 
-  //manage user
+  // manage user
   useEffect(() => {
-    const userManage = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setIsLoading(false);
 
@@ -57,7 +57,8 @@ export const AuthProvider = ({ children }) => {
         };
       }
     });
-    return () => userManage();
+
+    return () => unsubscribe();
   }, []);
 
   const value = {

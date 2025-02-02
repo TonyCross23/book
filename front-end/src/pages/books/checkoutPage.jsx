@@ -2,8 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
+import { useCreateOrderMutation } from "../../redux/features/order/ordersApi";
+import Swal from "sweetalert2";
 
 const CheckoutPage = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -18,6 +20,9 @@ const CheckoutPage = () => {
     watch,
     formState: { errors },
   } = useForm();
+
+  const [createOrder, { isLoading, error }] = useCreateOrderMutation();
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     const newOrder = {
@@ -34,6 +39,23 @@ const CheckoutPage = () => {
       totalPrice: totalPrice,
     };
     console.log(newOrder);
+
+    try {
+      await createOrder(newOrder).unwrap();
+      Swal.fire({
+        title: "Confirmed Order",
+        text: "Your order placed successfully!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, It's Okay!",
+      });
+      navigate("/orders");
+    } catch (error) {
+      console.error("Error place an order", error);
+      alert("Failed to place an order");
+    }
   };
   return (
     <section>
