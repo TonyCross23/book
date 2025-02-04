@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import getBaseUrl from "../../utils/baseUrl";
 import { MdIncompleteCircle } from "react-icons/md";
 import RevenueChart from "./revenueChart";
+import { getBaseUrl } from "../../utils/baseUrl";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);

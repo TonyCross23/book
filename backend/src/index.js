@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import bookRouter from "./routers/book.router.js";
 import orderRouter from "./routers/order.router.js";
 import userRoute from "./routers/user.router.js";
+import statusRouter from "./status/admin.status.js";
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use("/api/book", bookRouter);
 app.use("/api/order", orderRouter);
 app.use("/api/auth", userRoute);
+app.use("/api/admin", statusRouter);
 
 app.listen(PORT, async () => {
   console.log(`Server is running on port : ${PORT}`);
