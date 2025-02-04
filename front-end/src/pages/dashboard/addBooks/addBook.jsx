@@ -15,7 +15,6 @@ const AddBook = () => {
   const [imageFile, setimageFile] = useState(null);
   const [addBook, { isLoading, isError }] = useAddBookMutation();
   const [imageFileName, setimageFileName] = useState("");
-  console.log(imageFile);
 
   const onSubmit = async (data) => {
     const newBookData = {

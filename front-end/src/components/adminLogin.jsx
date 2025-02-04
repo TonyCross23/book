@@ -16,7 +16,7 @@ const AdminLogin = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    //console.log(data);
     try {
       const response = await axios.post(
         `${getBaseUrl()}/api/auth/admin`,
@@ -28,7 +28,7 @@ const AdminLogin = () => {
         }
       );
       const auth = response.data;
-      console.log(auth);
+      //console.log(auth);
       if (auth.token) {
         localStorage.setItem("token", auth.token);
         setTimeout(() => {

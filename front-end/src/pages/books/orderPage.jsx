@@ -4,7 +4,7 @@ import { useGetOrderByEmailQuery } from "../../redux/features/order/ordersApi";
 
 const OrderPage = () => {
   const { currentUser } = useAuth();
-  console.log(currentUser);
+  //console.log(currentUser);
 
   const {
     data: orders = [],
