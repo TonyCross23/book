@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { MdIncompleteCircle } from "react-icons/md";
 import RevenueChart from "./revenueChart";
 import { getBaseUrl } from "../../utils/baseUrl";
+import Loading from "../../components/loading";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -32,7 +33,7 @@ const Dashboard = () => {
 
   // console.log(data)
 
-  if (loading) return <div>loading....</div>;
+  if (loading) return <Loading />;
   return (
     <>
       <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
@@ -305,26 +306,6 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-      </section>
-      <section className="text-right font-semibold text-gray-500">
-        <a href="#" className="text-purple-600 hover:underline">
-          Recreated on Codepen
-        </a>{" "}
-        with{" "}
-        <a
-          href="https://tailwindcss.com/"
-          className="text-teal-400 hover:underline"
-        >
-          Tailwind CSS
-        </a>{" "}
-        by Azri Kahar,{" "}
-        <a
-          href="https://dribbble.com/shots/10711741-Free-UI-Kit-for-Figma-Online-Courses-Dashboard"
-          className="text-purple-600 hover:underline"
-        >
-          original design
-        </a>{" "}
-        made by Chili Labs
       </section>
     </>
   );
