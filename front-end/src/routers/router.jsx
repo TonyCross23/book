@@ -7,7 +7,6 @@ import CartPage from "../pages/books/cartPage";
 import CheckoutPage from "../pages/books/checkoutPage";
 import BookDetail from "../pages/books/bookDetail";
 import PrivateRoute from "./privateRoute";
-import Order from "../../../backend/src/models/order.model";
 import OrderPage from "../pages/books/orderPage";
 import AdminLogin from "../components/adminLogin";
 import Dashboard from "../pages/dashboard/dashboard";

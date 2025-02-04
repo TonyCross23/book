@@ -1,1 +1,3 @@
-node_modules
+MONGO_URI=`mongodb://localhost:27017/book`
+PORT=6002
+JWT_SECRET_KEY='4f0066b20a0bced9f255adde0b30517546b610b9b5583bd91443fd2d2dcc9e001b992f7e5a3ce69012a3ad8e8a5b1c7bdedf53775351ed2daa6f4bc6752659dc'
