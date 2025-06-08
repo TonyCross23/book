@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 6001;
 //middleware
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://book-front-wlp8.vercel.app"],
+    origin: ["http://localhost:5173", "https://book-front-wlp8.vercel.app", "http://192.168.1.17:5173"],
     credentials: true,
   })
 );
